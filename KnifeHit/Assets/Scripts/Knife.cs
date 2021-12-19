@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Knife : MonoBehaviour
 {
@@ -24,7 +25,7 @@ public class Knife : MonoBehaviour
     }
     void Update()
     {
-        if(Input.GetButtonDown("Fire1") && isActive)
+        if(Input.GetMouseButtonDown(0) && isActive && !EventSystem.current.IsPointerOverGameObject())
         {   
             rb.AddForce(throwForce, ForceMode2D.Impulse);
             rb.gravityScale = 1;
