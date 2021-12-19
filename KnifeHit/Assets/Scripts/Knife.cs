@@ -11,6 +11,8 @@ public class Knife : MonoBehaviour
     ParticleSystem particle;
     UIManager uiManager;
 
+    AudioSource source;
+
     bool isActive = true;
     void Awake()
     {
@@ -18,6 +20,7 @@ public class Knife : MonoBehaviour
         knifeCollider = GetComponent<BoxCollider2D>();
         particle = GetComponent<ParticleSystem>();
         uiManager = FindObjectOfType<UIManager>();
+        source = GetComponent<AudioSource>();
     }
     void Update()
     {
@@ -39,6 +42,8 @@ public class Knife : MonoBehaviour
         if(other.collider.CompareTag("Log"))
         {
             particle.Play();
+
+            AudioManager.Instance.PlayAudio(source.clip, source);
 
             rb.velocity = new Vector2(0,0);
             rb.bodyType = RigidbodyType2D.Kinematic;

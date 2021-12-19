@@ -30,7 +30,7 @@ public class LogMotor : MonoBehaviour
     {
         for (int i = 0; i < rotationElements.Length; i++)
         {
-            rotationElements[i].speed *= 1.3f;
+            rotationElements[i].speed *= 1.5f;
         }
 
         DestroyChildKnives();
