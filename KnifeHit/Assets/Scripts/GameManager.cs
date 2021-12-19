@@ -3,24 +3,27 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
-    public int knifeCount;
+    [SerializeField]
+    int knifeCount;
 
     [SerializeField] 
     GameObject knife;
 
-    public UIManager uiManager;
+    [SerializeField]
+    UIManager uiManager;
 
     [SerializeField]
     LogMotor logMotor;
 
-    private int level = 1;
-
     [SerializeField]
     int remainingKnifeCount;
+
+    private int level = 1;
 
     public int score = 0;
 
     public static GameManager Instance;
+    
 
     void Awake()
     {   
@@ -39,17 +42,6 @@ public class GameManager : MonoBehaviour
         Instantiate(knife, transform.position, Quaternion.identity);
         remainingKnifeCount--;
     }
-
-    void NextLevel()
-    {
-        level++;
-        knifeCount++;
-        remainingKnifeCount = knifeCount;
-        uiManager.ShowKnivesPanel(knifeCount);
-        logMotor.NextLevelSpeed(level);
-        SpawnKnife();
-    }
-
     public void OnSuccessfullHit()
     {
         score += 10;
@@ -62,6 +54,15 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(NextLevelSequence(0.3f));
         }
+    }
+    void NextLevel()
+    {
+        level++;
+        knifeCount++;
+        remainingKnifeCount = knifeCount;
+        uiManager.ShowKnivesPanel(knifeCount);
+        logMotor.NextLevelSpeed(level);
+        SpawnKnife();
     }
 
     IEnumerator NextLevelSequence(float waitTime)
