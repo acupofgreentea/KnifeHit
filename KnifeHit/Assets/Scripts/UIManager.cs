@@ -26,6 +26,15 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         soundButton.onClick.AddListener(MuteAudio);
+
+        if(AudioListener.pause == false)
+        {
+            soundButton.image.sprite = soundOnIcon;
+        }
+        else
+        {
+            soundButton.image.sprite = muteIcon;
+        }
     }
 
     public void RestartGame()
