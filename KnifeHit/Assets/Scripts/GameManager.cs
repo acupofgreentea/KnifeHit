@@ -1,80 +1,26 @@
 using UnityEngine;
 using System.Collections;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-    [SerializeField]
-    int knifeCount;
-
-    [SerializeField] 
-    GameObject knife;
-
-    [SerializeField]
-    UIManager uiManager;
-
-    [SerializeField]
-    LogMotor logMotor;
-
-    [SerializeField]
-    int remainingKnifeCount;
-
-    private int level = 1;
-
-    public int score = 0;
-
-    public static GameManager Instance;
-    
-
-    void Awake()
-    {   
-        Instance = this;
+    public int Score {get; set;}
+    protected override void Awake()
+    {
+        base.Awake();
     }
-    
+
     void Start()
     {
-        remainingKnifeCount = knifeCount;
-        SpawnKnife();
-        uiManager.ShowKnivesPanel(knifeCount);
+        Score = 0;
     }
-
-    void SpawnKnife()
+    public void UpdateScore(int scoreToAdd)
     {
-        Instantiate(knife, transform.position, Quaternion.identity);
-        remainingKnifeCount--;
+        Score += scoreToAdd;
     }
-    public void OnSuccessfullHit()
-    {
-        score += 10;
-
-        if(remainingKnifeCount > 0)
-        {
-            SpawnKnife();
-        }
-        else
-        {
-            StartCoroutine(NextLevelSequence(0.3f));
-        }
-    }
-    void NextLevel()
-    {
-        level++;
-        knifeCount++;
-        remainingKnifeCount = knifeCount;
-        uiManager.ShowKnivesPanel(knifeCount);
-        logMotor.NextLevelSpeed(level);
-        SpawnKnife();
-    }
-
-    IEnumerator NextLevelSequence(float waitTime)
-    {
-        yield return new WaitForSeconds(waitTime);
-        //play sound
-        NextLevel();
-    }
-
+    
     void GameOver()
     {
-        uiManager.GameOverPanel();
+        UIManager.Instance.GameOverPanel();
         Time.timeScale = 0;
     }
 

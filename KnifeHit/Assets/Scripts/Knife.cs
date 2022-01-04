@@ -10,9 +10,9 @@ public class Knife : MonoBehaviour
 
     BoxCollider2D knifeCollider;
     ParticleSystem particle;
-    UIManager uiManager;
-
     AudioSource source;
+
+    LevelManager levelManager;
 
     bool isActive = true;
     void Awake()
@@ -20,8 +20,8 @@ public class Knife : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         knifeCollider = GetComponent<BoxCollider2D>();
         particle = GetComponent<ParticleSystem>();
-        uiManager = FindObjectOfType<UIManager>();
         source = GetComponent<AudioSource>();
+        levelManager = FindObjectOfType<LevelManager>();
     }
     void Update()
     {
@@ -29,7 +29,7 @@ public class Knife : MonoBehaviour
         {   
             rb.AddForce(throwForce, ForceMode2D.Impulse);
             rb.gravityScale = 1;
-            uiManager.DecreaseUsedKnives();
+            UIManager.Instance.DecreaseUsedKnives();
         }
     }
     
@@ -53,7 +53,7 @@ public class Knife : MonoBehaviour
             knifeCollider.offset = new Vector2(knifeCollider.offset.x, -0.4f);
             knifeCollider.size = new Vector2(knifeCollider.size.x, 1.2f);
 
-            GameManager.Instance.OnSuccessfullHit();
+            levelManager.OnSuccessfullHit();
         }
         else if(other.collider.CompareTag("Knife"))
         {

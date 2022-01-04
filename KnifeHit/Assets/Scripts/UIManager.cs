@@ -3,10 +3,10 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-public class UIManager : MonoBehaviour
+public class UIManager : Singleton<UIManager>
 {
     [SerializeField] 
-    GameObject knivesPanel;
+    GameObject knivesPanel; 
 
     [SerializeField]
     GameObject gameOverPanel;
@@ -23,6 +23,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] Button soundButton;
 
     private bool muted;
+
+    protected override void Awake()
+    {
+        base.Awake();
+    }
     void Start()
     {
         soundButton.onClick.AddListener(MuteAudio);
@@ -41,11 +46,12 @@ public class UIManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1;
+        gameOverPanel.SetActive(false);
     }
 
     public void GameOverPanel()
     {
-        scoreText.text = GameManager.Instance.score.ToString();
+        scoreText.text = GameManager.Instance.Score.ToString();
         gameOverPanel.SetActive(true);
     }
 

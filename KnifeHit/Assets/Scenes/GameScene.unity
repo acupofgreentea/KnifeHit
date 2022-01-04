@@ -559,12 +559,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f8dc7f17d855a444886d7fe3cc8e284, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knifeCount: 2
-  knife: {fileID: 6524981794785310474, guid: 5742aeebb4cc569469c3f0900199adea, type: 3}
-  uiManager: {fileID: 343960139}
-  logMotor: {fileID: 1030507798}
-  remainingKnifeCount: 0
-  score: 0
 --- !u!4 &467937963
 Transform:
   m_ObjectHideFlags: 0
@@ -573,7 +567,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 467937961}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.86, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1076,6 +1070,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 806829481}
   m_CullTransparentMesh: 1
+--- !u!1 &916346372
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 916346373}
+  - component: {fileID: 916346374}
+  m_Layer: 0
+  m_Name: LevelManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &916346373
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 916346372}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.15, y: -3.56, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &916346374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 916346372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 215ee91689c68c34b85049a25d5ea0d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logMotor: {fileID: 1030507798}
+  knife: {fileID: 6524981794785310474, guid: 5742aeebb4cc569469c3f0900199adea, type: 3}
+  knifeCount: 3
+  remainingKnifeCount: 0
 --- !u!1 &1030507794
 GameObject:
   m_ObjectHideFlags: 0

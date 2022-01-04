@@ -1,15 +1,13 @@
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
+public class AudioManager : Singleton<AudioManager>
 {
-    public static AudioManager Instance;
-
     [SerializeField]
     AudioSource source;
-
-    void Awake()
+    protected override void Awake()
     {
-        Instance = this;
+        base.Awake();
+        DontDestroyOnLoad(this.gameObject);
     }
     void Start()
     {
