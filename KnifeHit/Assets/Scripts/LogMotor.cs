@@ -26,11 +26,11 @@ public class LogMotor : MonoBehaviour
         StartCoroutine(StartRotation());
     }
 
-    public void NextLevelSpeed(int level)
+    public void NextLevelSpeed(int logSpeed)
     {
         for (int i = 0; i < rotationElements.Length; i++)
         {
-            rotationElements[i].speed *= 1.5f;
+            rotationElements[i].speed *= logSpeed;
         }
 
         DestroyChildKnives();
