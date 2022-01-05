@@ -1,21 +1,18 @@
-using System.Collections;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField] LogMotor logMotor;
+    [SerializeField] private GameObject[] knivesOnLog;
+    [SerializeField] private GameObject[] tomatos;
+    [SerializeField] private LogMotor logMotor;
+    [SerializeField] private GameObject knife;
     
-    [SerializeField] GameObject knife;
 
-    [SerializeField] int knifeCount;
-
-    [SerializeField] int remainingKnifeCount;
+    [SerializeField] private int knifeCount;
+    [SerializeField] private int remainingKnifeCount;
+    [SerializeField] private int logSpeedMultiplier = 2;
+    [SerializeField] private int level = 1;
     
-    public GameObject[] knivesOnLog;
-
-    public int level = 1;
-    
-    private int logSpeed = 2;
     void Start()
     {
         remainingKnifeCount = knifeCount;
@@ -33,8 +30,7 @@ public class LevelManager : MonoBehaviour
     {
         int randomKnifeNumber = Random.Range(0, knivesOnLog.Length);
 
-        knivesOnLog[randomKnifeNumber].SetActive(true);
-        
+        knivesOnLog[randomKnifeNumber].SetActive(true);    
     }
     public void OnSuccessfullHit()
     {
@@ -51,15 +47,7 @@ public class LevelManager : MonoBehaviour
     
     void LoadNextLevel()
     {   
-        if(level % 4 == 3)
-        {
-            SpawnBoss();
-        }
-        else
-        {
-            StartCoroutine(NextLevelSequence(0.3f));
-        }
-
+        Invoke("NextLevel", 0.5f);
     }
     void NextLevel()
     {
@@ -70,9 +58,21 @@ public class LevelManager : MonoBehaviour
 
         UIManager.Instance.ShowKnivesPanel(knifeCount);
         
-        logMotor.NextLevelSpeed(logSpeed);
+        logMotor.NextLevelSpeed(logSpeedMultiplier);
 
         SpawnKnife();
+        
+        ClearKnivesOnLog();
+        
+        if(level % 4 == 3)
+        {
+            SpawnBoss();
+        }
+        else
+        {
+            ClearTomatosOnLog();
+        }
+
         
         /*if(level > 1)
         {
@@ -82,15 +82,27 @@ public class LevelManager : MonoBehaviour
         // Spawn Knives on Log with another algorithm
     }
 
-    void SpawnBoss()
+    void ClearKnivesOnLog()
     {
-        //spawn different log
+        foreach (var knife in knivesOnLog)
+        {
+            knife.SetActive(false);
+        }
+    }
+    void ClearTomatosOnLog()
+    {
+        
+        foreach (var tom in tomatos)
+        {
+            tom.SetActive(false);
+        }
     }
 
-    IEnumerator NextLevelSequence(float waitTime)
+    void SpawnBoss()
     {
-        yield return new WaitForSeconds(waitTime);
-        //play sound
-        NextLevel();
+        foreach (var tom in tomatos)
+        {
+            tom.SetActive(true);
+        }
     }
 }

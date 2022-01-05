@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Knife
   - Log
+  - Tomato
   layers:
   - Default
   - TransparentFX
@@ -48,4 +49,7 @@ TagManager:
     locked: 0
   - name: Log
     uniqueID: 3350740717
+    locked: 0
+  - name: Canvas
+    uniqueID: 2615797993
     locked: 0

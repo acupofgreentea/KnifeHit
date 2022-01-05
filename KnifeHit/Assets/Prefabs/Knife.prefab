@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbbc586d0d1700546bb8a45fc5e1071d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwForce: {x: 0, y: 20}
+  throwForce: {x: 0, y: 25}
 --- !u!82 &1879213452741861026
 AudioSource:
   m_ObjectHideFlags: 0

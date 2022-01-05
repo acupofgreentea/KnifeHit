@@ -17,7 +17,7 @@ public class LogMotor : MonoBehaviour
 
     JointMotor2D motor;
 
-    int rotationIndex = 0;
+    int rotationIndex;
     
     void Awake()
     {
@@ -25,7 +25,6 @@ public class LogMotor : MonoBehaviour
         motor = new JointMotor2D();
         StartCoroutine(StartRotation());
     }
-
     public void NextLevelSpeed(int logSpeed)
     {
         for (int i = 0; i < rotationElements.Length; i++)
@@ -48,6 +47,12 @@ public class LogMotor : MonoBehaviour
         }
     }
 
+    int GetRandomIndex()
+    {
+        rotationIndex = UnityEngine.Random.Range(0, rotationElements.Length);
+        return rotationIndex;
+    }
+
     IEnumerator StartRotation()
     {
 
@@ -55,14 +60,11 @@ public class LogMotor : MonoBehaviour
         {
             yield return new WaitForFixedUpdate();
 
-            motor.motorSpeed = rotationElements[rotationIndex].speed;
+            motor.motorSpeed = rotationElements[GetRandomIndex()].speed;
             motor.maxMotorTorque = 10000;
             wheelJoint.motor = motor;
 
-            yield return new WaitForSeconds(rotationElements[rotationIndex].duration);
-            rotationIndex++;
-
-            rotationIndex = rotationIndex < rotationElements.Length ? rotationIndex : 0;
+            yield return new WaitForSeconds(rotationElements[GetRandomIndex()].duration);
         }
 
     }

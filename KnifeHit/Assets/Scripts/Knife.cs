@@ -32,6 +32,14 @@ public class Knife : MonoBehaviour
             UIManager.Instance.DecreaseUsedKnives();
         }
     }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.CompareTag("Tomato"))
+        {
+            GameManager.Instance.UpdateScore(20);
+            other.gameObject.SetActive(false);
+        }
+    }
     
     void OnCollisionEnter2D(Collision2D other)
     {
@@ -55,11 +63,11 @@ public class Knife : MonoBehaviour
 
             levelManager.OnSuccessfullHit();
         }
-        else if(other.collider.CompareTag("Knife"))
+        else if(other.collider.CompareTag("Knife") || other.collider.CompareTag("KnivesOnLog"))
         {
             rb.velocity = new Vector2(rb.velocity.x, -2f);
 
-            StartCoroutine(GameManager.Instance.GameOverSequence(1f));
+            GameManager.Instance.Invoke("GameOver", 0.5f);
         }
     }
 }
