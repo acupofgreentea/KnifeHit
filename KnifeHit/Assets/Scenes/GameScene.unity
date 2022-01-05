@@ -213,7 +213,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &31061103
 Transform:
   m_ObjectHideFlags: 0
@@ -332,11 +332,11 @@ GameObject:
   - component: {fileID: 105084555}
   m_Layer: 0
   m_Name: KnifeBottom
-  m_TagString: Knife
+  m_TagString: KnivesOnLog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &105084552
 Transform:
   m_ObjectHideFlags: 0
@@ -634,11 +634,11 @@ GameObject:
   - component: {fileID: 220203618}
   m_Layer: 0
   m_Name: KnifeRight
-  m_TagString: Knife
+  m_TagString: KnivesOnLog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &220203615
 Transform:
   m_ObjectHideFlags: 0
@@ -786,9 +786,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knivesPanel: {fileID: 12674730}
+  knifeIcon: {fileID: 8702759959982106530, guid: 63f281ab94e096a4ea9755ae7f5d7ae3, type: 3}
   gameOverPanel: {fileID: 453880535}
   scoreText: {fileID: 647473173}
-  knifeIcon: {fileID: 8702759959982106530, guid: 63f281ab94e096a4ea9755ae7f5d7ae3, type: 3}
   muteIcon: {fileID: 21300000, guid: 4f2cbe0c7f3a7b54ebbea3f2a921704b, type: 3}
   soundOnIcon: {fileID: 21300000, guid: 8001ff53935f60b4f814757dd675b7d4, type: 3}
   soundButton: {fileID: 1707380115}
@@ -1242,7 +1242,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &555744843
 Transform:
   m_ObjectHideFlags: 0
@@ -1661,16 +1661,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 215ee91689c68c34b85049a25d5ea0d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  logMotor: {fileID: 1030507798}
-  knife: {fileID: 6524981794785310474, guid: 5742aeebb4cc569469c3f0900199adea, type: 3}
-  knifeCount: 3
-  remainingKnifeCount: 0
   knivesOnLog:
   - {fileID: 8432640593073948171}
   - {fileID: 220203614}
   - {fileID: 105084551}
   - {fileID: 986724877}
-  level: 1
+  tomatos:
+  - {fileID: 555744842}
+  - {fileID: 31061102}
+  - {fileID: 1068079365}
+  - {fileID: 1704573735}
+  knife: {fileID: 6524981794785310474, guid: 5742aeebb4cc569469c3f0900199adea, type: 3}
+  logMotor: {fileID: 1030507798}
+  knifeCount: 3
 --- !u!1 &986724877
 GameObject:
   m_ObjectHideFlags: 0
@@ -1685,11 +1688,11 @@ GameObject:
   - component: {fileID: 986724881}
   m_Layer: 0
   m_Name: KnifeLeft
-  m_TagString: Knife
+  m_TagString: KnivesOnLog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &986724878
 Transform:
   m_ObjectHideFlags: 0
@@ -1898,19 +1901,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationElements:
   - speed: 10
-    duration: 3
+    duration: 2
   - speed: 30
+    duration: 1.5
+  - speed: -20
+    duration: 3
+  - speed: 20
+    duration: 2
+  - speed: 5
+    duration: 2
+  - speed: -5
+    duration: 1.7
+  - speed: 15
     duration: 2
   - speed: -20
-    duration: 5
-  - speed: -15
-    duration: 4
-  - speed: 5
     duration: 1
-  - speed: -5
-    duration: 1
-  - speed: 12
+  - speed: -12
     duration: 4
+  - speed: 16
+    duration: 2
+  - speed: 8
+    duration: 1.9
+  speedMultiplier: 2
 --- !u!1 &1068079365
 GameObject:
   m_ObjectHideFlags: 0
@@ -1929,7 +1941,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1068079366
 Transform:
   m_ObjectHideFlags: 0
@@ -2119,7 +2131,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1704573736
 Transform:
   m_ObjectHideFlags: 0
@@ -2327,7 +2339,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 8001ff53935f60b4f814757dd675b7d4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2409,7 +2421,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -2417,7 +2429,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 3
+  m_Constraints: 1
 --- !u!212 &1764757767
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2481,7 +2493,7 @@ GameObject:
   - component: {fileID: 2053498968}
   m_Layer: 0
   m_Name: Knives
-  m_TagString: Untagged
+  m_TagString: KnivesOnLog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2612,11 +2624,11 @@ GameObject:
   - component: {fileID: 8432640593073948172}
   m_Layer: 0
   m_Name: KnifeTop
-  m_TagString: Knife
+  m_TagString: KnivesOnLog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!50 &8432640593073948172
 Rigidbody2D:
   serializedVersion: 4

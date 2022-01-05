@@ -2,14 +2,13 @@ using UnityEngine;
 
 public class AudioManager : Singleton<AudioManager>
 {
-    [SerializeField]
-    AudioSource source;
+    [SerializeField] private AudioSource source;
     protected override void Awake()
     {
         base.Awake();
         DontDestroyOnLoad(this.gameObject);
     }
-    void Start()
+    private void Start()
     {
         PlayAudio(source.clip, source);
     }

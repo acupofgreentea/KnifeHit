@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -20,13 +19,7 @@ public class GameManager : Singleton<GameManager>
     
     void GameOver()
     {
-        UIManager.Instance.GameOverPanel();
+        UIManager.Instance.ShowGameOverPanel();
         Time.timeScale = 0;
-    }
-
-    public IEnumerator GameOverSequence(float waitTime)
-    {
-        yield return new WaitForSeconds(waitTime);
-        GameOver();
     }
 }

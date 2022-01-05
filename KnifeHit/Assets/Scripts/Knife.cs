@@ -3,70 +3,96 @@ using UnityEngine.EventSystems;
 
 public class Knife : MonoBehaviour
 {
-    [SerializeField]
-    Vector2 throwForce;
+    [SerializeField] private Vector2 throwForce;
 
-    Rigidbody2D rb;
+    private Rigidbody2D rb;
 
-    BoxCollider2D knifeCollider;
-    ParticleSystem particle;
-    AudioSource source;
+    private BoxCollider2D knifeCollider;
+    private ParticleSystem particle;
+    private AudioSource source;
 
-    LevelManager levelManager;
+    private LevelManager levelManager;
 
-    bool isActive = true;
+    private bool isActive = true;
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         knifeCollider = GetComponent<BoxCollider2D>();
         particle = GetComponent<ParticleSystem>();
         source = GetComponent<AudioSource>();
+        
         levelManager = FindObjectOfType<LevelManager>();
     }
-    void Update()
+
+    // Before build use !EventSystem.current.IsPointerOverGameObject()
+    private void Update()
     {
         if(Input.GetMouseButtonDown(0) && isActive && !EventSystem.current.IsPointerOverGameObject())
         {   
-            rb.AddForce(throwForce, ForceMode2D.Impulse);
-            rb.gravityScale = 1;
-            UIManager.Instance.DecreaseUsedKnives();
+            UseKnife();
         }
     }
-    void OnTriggerEnter2D(Collider2D other)
+    
+    private void UseKnife()
+    {
+        rb.AddForce(throwForce, ForceMode2D.Impulse);
+        rb.gravityScale = 1;
+        UIManager.Instance.DestroyUsedKnives();
+    }
+
+    private void HitTomato()
+    {
+        GameManager.Instance.UpdateScore(20);
+        //AudioManager.Instance.PlayAudio(clip, source);        play tomato sound
+    }
+    
+    private void HitLog()
+    {
+        particle.Play();
+        AudioManager.Instance.PlayAudio(source.clip, source);
+    }
+    private void SetPhysicsOnHitKnife() => rb.velocity = new Vector2(rb.velocity.x, -2f);
+
+    private void SetPhysicsOnHitLog()
+    {
+        rb.velocity = new Vector2(0,0);
+        rb.bodyType = RigidbodyType2D.Kinematic;
+
+        knifeCollider.offset = new Vector2(knifeCollider.offset.x, -0.4f);
+        knifeCollider.size = new Vector2(knifeCollider.size.x, 1.2f);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.CompareTag("Tomato"))
         {
-            GameManager.Instance.UpdateScore(20);
+            HitTomato();
             other.gameObject.SetActive(false);
         }
     }
     
-    void OnCollisionEnter2D(Collision2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
         if(!isActive)
+        {
             return;
-        
-        isActive = false;
+        } 
 
+        isActive = false;
+        
         if(other.collider.CompareTag("Log"))
         {
-            particle.Play();
+            HitLog();
+            
+            SetPhysicsOnHitLog();
 
-            AudioManager.Instance.PlayAudio(source.clip, source);
-
-            rb.velocity = new Vector2(0,0);
-            rb.bodyType = RigidbodyType2D.Kinematic;
             transform.SetParent(other.collider.transform);
-
-            knifeCollider.offset = new Vector2(knifeCollider.offset.x, -0.4f);
-            knifeCollider.size = new Vector2(knifeCollider.size.x, 1.2f);
-
+            
             levelManager.OnSuccessfullHit();
         }
-        else if(other.collider.CompareTag("Knife") || other.collider.CompareTag("KnivesOnLog"))
+        else
         {
-            rb.velocity = new Vector2(rb.velocity.x, -2f);
-
+            SetPhysicsOnHitKnife();
             GameManager.Instance.Invoke("GameOver", 0.5f);
         }
     }

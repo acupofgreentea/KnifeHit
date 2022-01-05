@@ -5,22 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : Singleton<UIManager>
 {
-    [SerializeField] 
-    GameObject knivesPanel; 
+    [SerializeField] private GameObject knivesPanel; 
+    [SerializeField] private GameObject knifeIcon;
+    [SerializeField] private GameObject gameOverPanel;
 
-    [SerializeField]
-    GameObject gameOverPanel;
+    [SerializeField] private TextMeshProUGUI scoreText;
 
-    [SerializeField]
-    TextMeshProUGUI scoreText;
+    [SerializeField] private Sprite muteIcon;
+    [SerializeField] private Sprite soundOnIcon;
 
-    [SerializeField] 
-    GameObject knifeIcon;
-
-    [SerializeField] Sprite muteIcon;
-    [SerializeField] Sprite soundOnIcon;
-
-    [SerializeField] Button soundButton;
+    [SerializeField] private Button soundButton;
 
     private bool muted;
 
@@ -31,25 +25,16 @@ public class UIManager : Singleton<UIManager>
     void Start()
     {
         soundButton.onClick.AddListener(MuteAudio);
-
-        if(AudioListener.pause == false)
-        {
-            soundButton.image.sprite = soundOnIcon;
-        }
-        else
-        {
-            soundButton.image.sprite = muteIcon;
-        }
     }
 
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        Time.timeScale = 1;
         gameOverPanel.SetActive(false);
+        Time.timeScale = 1;
     }
 
-    public void GameOverPanel()
+    public void ShowGameOverPanel()
     {
         scoreText.text = GameManager.Instance.Score.ToString();
         gameOverPanel.SetActive(true);
@@ -63,24 +48,24 @@ public class UIManager : Singleton<UIManager>
         }
         
     }
-    public void DecreaseUsedKnives()
+    public void DestroyUsedKnives()
     {
         Destroy(knivesPanel.transform.GetChild(0).gameObject); 
     }
 
     public void MuteAudio()
     {
-        if(muted == false)
+        if(muted)
         {
-            muted = true;
-            AudioListener.pause = true;
-            soundButton.image.sprite = muteIcon;
+            muted = !muted;
+            AudioListener.pause = muted;
+            soundButton.image.sprite = soundOnIcon;
         }
         else
         {
-            muted = false;
-            AudioListener.pause = false;
-            soundButton.image.sprite = soundOnIcon;
+            muted = !muted;
+            AudioListener.pause = muted;
+            soundButton.image.sprite = muteIcon;
         }
     }
 }
