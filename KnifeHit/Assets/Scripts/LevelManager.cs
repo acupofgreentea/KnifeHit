@@ -1,4 +1,6 @@
 using UnityEngine;
+using System;
+using Random = UnityEngine.Random;
 
 public class LevelManager : MonoBehaviour
 {
@@ -10,6 +12,9 @@ public class LevelManager : MonoBehaviour
     
     private int level = 1;
     private int remainingKnifeCount;
+
+    public static Action LogOnNextLevel;
+    public static Action<int> UIOnNextLevel;
     
     private void Start()
     {
@@ -73,9 +78,9 @@ public class LevelManager : MonoBehaviour
 
         SetLevel();
         
-        logMotor.SetLogForNextLevel();
+        LogOnNextLevel();
 
-        UIManager.Instance.ShowKnivesPanel(knifeCount);
+        UIOnNextLevel(knifeCount);
 
         SpawnKnife();
         

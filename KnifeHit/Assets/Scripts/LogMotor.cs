@@ -13,9 +13,16 @@ public class LogMotor : MonoBehaviour
 
     private int rotationIndex;
 
-    [SerializeField] private int speedMultiplier = 2;
+    [SerializeField] private float speedMultiplier = 2;
     
-    
+    void OnEnable()
+    {
+        LevelManager.LogOnNextLevel += SetLogForNextLevel;
+    }
+    void OnDisable()
+    {
+        LevelManager.LogOnNextLevel -= SetLogForNextLevel;
+    }
     private void Awake()
     {
         wheelJoint = GetComponent<WheelJoint2D>();

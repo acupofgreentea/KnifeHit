@@ -18,6 +18,15 @@ public class UIManager : Singleton<UIManager>
 
     private bool muted;
 
+    void OnEnable()
+    {
+        LevelManager.UIOnNextLevel += ShowKnivesPanel;
+    }
+    void OnDisable()
+    {
+        LevelManager.UIOnNextLevel -= ShowKnivesPanel;
+    }
+
     protected override void Awake()
     {
         base.Awake();

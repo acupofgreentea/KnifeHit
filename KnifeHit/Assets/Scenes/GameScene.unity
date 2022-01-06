@@ -1922,7 +1922,7 @@ MonoBehaviour:
     duration: 2
   - speed: 8
     duration: 1.9
-  speedMultiplier: 2
+  speedMultiplier: 1.3
 --- !u!1 &1068079365
 GameObject:
   m_ObjectHideFlags: 0
