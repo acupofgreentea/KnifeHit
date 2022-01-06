@@ -17,11 +17,11 @@ public class LogMotor : MonoBehaviour
     
     void OnEnable()
     {
-        LevelManager.LogOnNextLevel += SetLogForNextLevel;
+        LevelManager.LogMotorOnNextLevel += SetLogForNextLevel;
     }
     void OnDisable()
     {
-        LevelManager.LogOnNextLevel -= SetLogForNextLevel;
+        LevelManager.LogMotorOnNextLevel -= SetLogForNextLevel;
     }
     private void Awake()
     {

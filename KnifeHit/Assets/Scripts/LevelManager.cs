@@ -13,8 +13,24 @@ public class LevelManager : MonoBehaviour
     private int level = 1;
     private int remainingKnifeCount;
 
-    public static Action LogOnNextLevel;
+    public static Action LogMotorOnNextLevel;
     public static Action<int> UIOnNextLevel;
+    private delegate void NextLevelProps();
+
+    private event NextLevelProps LeveLProps;
+
+    void OnEnable()
+    {
+        LeveLProps += SetKnivesForNextLevel;
+        LeveLProps += SetLevel;
+        LeveLProps += ClearKnivesOnLog;
+    }
+    void OnDisable()
+    {
+        LeveLProps -= SetKnivesForNextLevel;
+        LeveLProps -= SetLevel;
+        LeveLProps -= ClearKnivesOnLog;
+    }
     
     private void Start()
     {
@@ -74,33 +90,26 @@ public class LevelManager : MonoBehaviour
     }
     private void LoadNextLevel()
     {
-        SetKnivesForNextLevel();
-
-        SetLevel();
+        LeveLProps();
         
-        LogOnNextLevel();
+        LogMotorOnNextLevel();
 
         UIOnNextLevel(knifeCount);
 
         SpawnKnife();
-        
-        ClearKnivesOnLog();
     }
     private void LoadBossLevel()
     {
         //change log sprite
 
+        SpawnTomatos();
+    }
+
+    private void SpawnTomatos()
+    {
         foreach (var tom in tomatos)
         {
             tom.SetActive(true);
-        }
-    }
-
-    private void ClearKnivesOnLog()
-    {
-        foreach (var knife in knivesOnLog)
-        {
-            knife.SetActive(false);
         }
     }
     private void ClearTomatosOnLog()
@@ -108,6 +117,13 @@ public class LevelManager : MonoBehaviour
         foreach (var tom in tomatos)
         {
             tom.SetActive(false);
+        }
+    }
+    private void ClearKnivesOnLog()
+    {
+        foreach (var knife in knivesOnLog)
+        {
+            knife.SetActive(false);
         }
     }
 }
