@@ -14,6 +14,9 @@ public class LogMotor : MonoBehaviour
     private int rotationIndex;
 
     [SerializeField] private float speedMultiplier = 2;
+
+
+    private const string usableKnife = "UsableKnife";
     
     void OnEnable()
     {
@@ -58,7 +61,7 @@ public class LogMotor : MonoBehaviour
     {
         GameObject[] childKnives;
 
-        childKnives = GameObject.FindGameObjectsWithTag("UsableKnife");
+        childKnives = GameObject.FindGameObjectsWithTag(usableKnife);
 
         foreach (var knives in childKnives)
         {

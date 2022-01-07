@@ -43,6 +43,11 @@ public class UIManager : Singleton<UIManager>
         Time.timeScale = 1;
     }
 
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
     public void ShowGameOverPanel()
     {
         scoreText.text = GameManager.Instance.Score.ToString();

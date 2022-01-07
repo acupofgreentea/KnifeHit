@@ -15,6 +15,7 @@ public class LevelManager : MonoBehaviour
 
     public static Action LogMotorOnNextLevel;
     public static Action<int> UIOnNextLevel;
+
     private delegate void NextLevelProps();
 
     private event NextLevelProps LeveLProps;
@@ -63,7 +64,7 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
-            Invoke("LoadNextLevel", 0.5f);
+            Invoke(nameof(LoadNextLevel), 0.5f);
         }
     }
 
@@ -81,7 +82,7 @@ public class LevelManager : MonoBehaviour
         
         if(level % 4 == 3)
         {
-            LoadBossLevel();
+            Invoke(nameof(LoadBossLevel), 0f);
         }
         else
         {

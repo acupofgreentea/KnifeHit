@@ -14,6 +14,10 @@ public class Knife : MonoBehaviour
     private LevelManager levelManager;
 
     private bool isActive = true;
+
+
+    private const string tomato = "Tomato";
+    private const string log = "Log";
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -64,7 +68,7 @@ public class Knife : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.CompareTag("Tomato"))
+        if(other.gameObject.CompareTag(tomato))
         {
             HitTomato();
             other.gameObject.SetActive(false);
@@ -80,7 +84,7 @@ public class Knife : MonoBehaviour
 
         isActive = false;
         
-        if(other.collider.CompareTag("Log"))
+        if(other.collider.CompareTag(log))
         {
             HitLog();
             
