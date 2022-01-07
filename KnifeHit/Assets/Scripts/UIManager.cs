@@ -8,6 +8,7 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private GameObject knivesPanel; 
     [SerializeField] private GameObject knifeIcon;
     [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private GameObject bossLevelText;
 
     [SerializeField] private TextMeshProUGUI scoreText;
 
@@ -46,6 +47,16 @@ public class UIManager : Singleton<UIManager>
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void ShowBossLevelText()
+    {
+        bossLevelText.SetActive(true);
+    }
+
+    public void HideBossLevelText()
+    {
+        bossLevelText.SetActive(false);
     }
 
     public void ShowGameOverPanel()

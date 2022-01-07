@@ -8,7 +8,7 @@ public class GameManager : Singleton<GameManager>
         base.Awake();
     }
 
-    void Start()
+    private void Start()
     {
         Score = 0;
     }
@@ -17,7 +17,7 @@ public class GameManager : Singleton<GameManager>
         Score += scoreToAdd;
     }
     
-    void GameOver()
+    private void GameOver()
     {
         UIManager.Instance.ShowGameOverPanel();
         Time.timeScale = 0;

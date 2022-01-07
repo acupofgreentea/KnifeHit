@@ -20,22 +20,25 @@ public class LevelManager : MonoBehaviour
 
     private event NextLevelProps LeveLProps;
 
-    void OnEnable()
+    private void OnEnable()
     {
         LeveLProps += SetKnivesForNextLevel;
-        LeveLProps += SetLevel;
         LeveLProps += ClearKnivesOnLog;
+        LeveLProps += SetLevel;
     }
-    void OnDisable()
+    private void OnDisable()
     {
         LeveLProps -= SetKnivesForNextLevel;
-        LeveLProps -= SetLevel;
         LeveLProps -= ClearKnivesOnLog;
+        LeveLProps -= SetLevel;
+    }
+    void Awake()
+    {
+        remainingKnifeCount = knifeCount;
     }
     
     private void Start()
     {
-        remainingKnifeCount = knifeCount;
         SpawnKnife();
         UIManager.Instance.ShowKnivesPanel(knifeCount);
     }
@@ -44,6 +47,17 @@ public class LevelManager : MonoBehaviour
     {
         Instantiate(knife, transform.position, Quaternion.identity);
         remainingKnifeCount--;
+    }
+    
+    private void LoadNextLevel()
+    {
+        LeveLProps();
+        
+        LogMotorOnNextLevel();
+
+        UIOnNextLevel(knifeCount);
+
+        SpawnKnife();
     }
     
     private int GetRandomKnifeNumber()
@@ -78,30 +92,31 @@ public class LevelManager : MonoBehaviour
     {
         level++;
 
-        // Spawn Knives on Log with another algorithm
+        if(level > 1)
+        {
+            for (int i = 0; i < GetRandomKnifeNumber() + 1; i++)
+            {
+                SpawnKnivesOnLog();
+            }
+        }
         
         if(level % 4 == 3)
         {
+            ClearKnivesOnLog();
             Invoke(nameof(LoadBossLevel), 0f);
         }
         else
         {
+            UIManager.Instance.HideBossLevelText();
             ClearTomatosOnLog();
         }
-    }
-    private void LoadNextLevel()
-    {
-        LeveLProps();
-        
-        LogMotorOnNextLevel();
-
-        UIOnNextLevel(knifeCount);
-
-        SpawnKnife();
     }
     private void LoadBossLevel()
     {
         //change log sprite
+        //highlight a text in UI
+
+        UIManager.Instance.ShowBossLevelText();
 
         SpawnTomatos();
     }
