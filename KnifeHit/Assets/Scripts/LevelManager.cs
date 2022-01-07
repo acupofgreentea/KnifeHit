@@ -11,7 +11,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private int knifeCount;
     
     private int level = 1;
-    private int remainingKnifeCount;
+    [SerializeField] private int remainingKnifeCount;
 
     public static Action LogMotorOnNextLevel;
     public static Action<int> UIOnNextLevel;
@@ -32,7 +32,7 @@ public class LevelManager : MonoBehaviour
         LeveLProps -= ClearKnivesOnLog;
         LeveLProps -= SetLevel;
     }
-    void Awake()
+    private void Awake()
     {
         remainingKnifeCount = knifeCount;
     }
@@ -40,7 +40,7 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         SpawnKnife();
-        UIManager.Instance.ShowKnivesPanel(knifeCount);
+        UIOnNextLevel(knifeCount);
     }
 
     private void SpawnKnife()
@@ -48,26 +48,32 @@ public class LevelManager : MonoBehaviour
         Instantiate(knife, transform.position, Quaternion.identity);
         remainingKnifeCount--;
     }
-    
+
+    private void ResetRemainingKnifeCount()
+    {
+        int tempKnifeCount = remainingKnifeCount;
+        remainingKnifeCount -= tempKnifeCount;
+    }
+
+    public void ContinueWithRewardAd()
+    {
+        ResetRemainingKnifeCount();
+
+        UIManager.Instance.HideGameOverPanel();
+        UIManager.Instance.DestroyAllKnives();
+        GameManager.Instance.ResumeGame();
+        
+        LoadNextLevel();
+    }
     private void LoadNextLevel()
     {
         LeveLProps();
         
         LogMotorOnNextLevel();
+        
+        SpawnKnife();
 
         UIOnNextLevel(knifeCount);
-
-        SpawnKnife();
-    }
-    
-    private int GetRandomKnifeNumber()
-    {
-        return Random.Range(0, knivesOnLog.Length);
-    }
-    
-    private void SpawnKnivesOnLog()
-    {
-        knivesOnLog[GetRandomKnifeNumber()].SetActive(true);    
     }
     public void OnSuccessfullHit()
     {
@@ -81,11 +87,19 @@ public class LevelManager : MonoBehaviour
             Invoke(nameof(LoadNextLevel), 0.5f);
         }
     }
-
     private void SetKnivesForNextLevel()
     {
         knifeCount++;
         remainingKnifeCount = knifeCount;
+    }
+    
+    private int GetRandomKnifeNumber()
+    {
+        return Random.Range(0, knivesOnLog.Length);
+    }
+    private void SpawnKnivesOnLog()
+    {
+        knivesOnLog[GetRandomKnifeNumber()].SetActive(true);    
     }
 
     private void SetLevel()
@@ -114,8 +128,6 @@ public class LevelManager : MonoBehaviour
     private void LoadBossLevel()
     {
         //change log sprite
-        //highlight a text in UI
-
         UIManager.Instance.ShowBossLevelText();
 
         SpawnTomatos();

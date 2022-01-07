@@ -20,6 +20,15 @@ public class GameManager : Singleton<GameManager>
     private void GameOver()
     {
         UIManager.Instance.ShowGameOverPanel();
+        PauseGame();
+    }
+
+    public void PauseGame()
+    {
         Time.timeScale = 0;
+    }
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
     }
 }

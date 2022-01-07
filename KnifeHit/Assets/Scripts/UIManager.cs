@@ -19,11 +19,11 @@ public class UIManager : Singleton<UIManager>
 
     private bool muted;
 
-    void OnEnable()
+    private void OnEnable()
     {
         LevelManager.UIOnNextLevel += ShowKnivesPanel;
     }
-    void OnDisable()
+    private void OnDisable()
     {
         LevelManager.UIOnNextLevel -= ShowKnivesPanel;
     }
@@ -32,7 +32,7 @@ public class UIManager : Singleton<UIManager>
     {
         base.Awake();
     }
-    void Start()
+    private void Start()
     {
         soundButton.onClick.AddListener(MuteAudio);
     }
@@ -41,7 +41,7 @@ public class UIManager : Singleton<UIManager>
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         gameOverPanel.SetActive(false);
-        Time.timeScale = 1;
+        GameManager.Instance.ResumeGame();
     }
 
     public void QuitGame()
@@ -65,13 +65,30 @@ public class UIManager : Singleton<UIManager>
         gameOverPanel.SetActive(true);
     }
 
+    public void HideGameOverPanel()
+    {
+        gameOverPanel.SetActive(false);
+    }
+
     public void ShowKnivesPanel(int count)
     {
         for (int i = 0; i < count; i++)
         {
             Instantiate(knifeIcon, knivesPanel.transform);
         }
-        
+    }
+
+    // Destroy knives from knivespanel for continue with reward ad
+    // DestroyUsedKnives() destroy knives from knivespanel when i throw a knife
+    public void DestroyAllKnives()
+    {
+        if(knivesPanel.transform.childCount != 0)
+        {
+            foreach (Transform children in knivesPanel.transform)
+            {
+                Destroy(children.gameObject);
+            }
+        }
     }
     public void DestroyUsedKnives()
     {
