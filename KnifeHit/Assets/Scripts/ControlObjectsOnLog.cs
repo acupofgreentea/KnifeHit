@@ -1,10 +1,12 @@
 using UnityEngine;
-public class ControlObjectsOnLog : MonoBehaviour, IControlObjects
+
+public class ControlObjectsOnLog : MonoBehaviour
 {
     [SerializeField] private GameObject[] knivesOnLog;
     [SerializeField] private GameObject[] tomatos;
     
     private int level = 1;
+
     private void OnEnable() 
     {
         LevelManager.LevelProperties += ClearKnivesOnLog;
@@ -16,7 +18,7 @@ public class ControlObjectsOnLog : MonoBehaviour, IControlObjects
         LevelManager.LevelProperties -= SetLevel;
     }
 
-    public void ClearKnivesOnLog()
+    private void ClearKnivesOnLog()
     {
         foreach (var knife in knivesOnLog)
         {
@@ -24,7 +26,7 @@ public class ControlObjectsOnLog : MonoBehaviour, IControlObjects
         }
     }
 
-    public void ClearTomatosOnLog()
+    private void ClearTomatosOnLog()
     {
         foreach (var tom in tomatos)
         {
@@ -32,22 +34,24 @@ public class ControlObjectsOnLog : MonoBehaviour, IControlObjects
         }
     }
 
-    public void SpawnKnivesOnLog()
+    private void SpawnKnivesOnLog()
     {
         knivesOnLog[GetRandomKnifeNumber()].SetActive(true);
     }
 
-    public void SpawnTomatosOnLog()
+    private void SpawnTomatosOnLog()
     {
         foreach (var tom in tomatos)
         {
             tom.SetActive(true);
         }
     }
-    public int GetRandomKnifeNumber()
+
+    private int GetRandomKnifeNumber()
     {
         return Random.Range(0, knivesOnLog.Length);
     }
+
     private void SetLevel()
     {
         level++;
@@ -71,6 +75,7 @@ public class ControlObjectsOnLog : MonoBehaviour, IControlObjects
             ClearTomatosOnLog();
         }
     }
+    
     private void LoadBossLevel()
     {
         //change log sprite
@@ -78,14 +83,4 @@ public class ControlObjectsOnLog : MonoBehaviour, IControlObjects
 
         SpawnTomatosOnLog();
     }
-    
-}
-
-public interface IControlObjects
-{
-    void ClearTomatosOnLog();
-    void ClearKnivesOnLog();
-    void SpawnTomatosOnLog();
-    void SpawnKnivesOnLog();   
-    int GetRandomKnifeNumber();
 }

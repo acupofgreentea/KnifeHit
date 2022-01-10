@@ -15,10 +15,12 @@ public class LevelManager : MonoBehaviour
     {
         controlKnives = GetComponent<ControlKnives>();
     }
+
     private void Start() 
     {
         UIOnNextLevel(controlKnives.knifeCount);
     }
+
     public void ContinueWithRewardAd()
     {
         controlKnives.ResetRemainingKnifeCount();
@@ -29,6 +31,7 @@ public class LevelManager : MonoBehaviour
         
         LoadNextLevel();
     }
+    
     public void LoadNextLevel()
     {
         LevelProperties();

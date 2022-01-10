@@ -1,16 +1,21 @@
 using UnityEngine;
+
 public class ControlKnives : MonoBehaviour
 {
     [SerializeField] private GameObject knife;
-    public int knifeCount;
+
     [SerializeField] private int remainingKnifeCount;
 
+    public int knifeCount;
+
     private LevelManager levelManager;
+
 
     private void OnEnable() 
     {
         LevelManager.LevelProperties += SetKnivesForNextLevel;
     }
+    
     private void OnDisable() 
     {
         LevelManager.LevelProperties += SetKnivesForNextLevel;
@@ -27,11 +32,13 @@ public class ControlKnives : MonoBehaviour
     {
         SpawnKnife();
     }
+
     public void SpawnKnife()
     {
         Instantiate(knife, transform.position, Quaternion.identity);
         remainingKnifeCount--;
     }
+
     private void SetKnivesForNextLevel()
     {
         knifeCount++;
@@ -43,6 +50,7 @@ public class ControlKnives : MonoBehaviour
         int tempKnifeCount = remainingKnifeCount;
         remainingKnifeCount -= tempKnifeCount;
     }
+
     public void OnSuccessfullHit()
     {
         if(remainingKnifeCount > 0)
