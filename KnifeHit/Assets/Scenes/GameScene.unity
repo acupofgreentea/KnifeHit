@@ -1345,8 +1345,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knife: {fileID: 6524981794785310474, guid: 5742aeebb4cc569469c3f0900199adea, type: 3}
-  knifeCount: 3
   remainingKnifeCount: 0
+  _knifeCount: 3
 --- !u!114 &335908003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2799,7 +2799,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50fdbc6cd6ad1d645a8830d590df94b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelManager: {fileID: 335908006}
 --- !u!4 &1099204028
 Transform:
   m_ObjectHideFlags: 0

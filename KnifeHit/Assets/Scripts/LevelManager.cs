@@ -18,7 +18,7 @@ public class LevelManager : MonoBehaviour
 
     private void Start() 
     {
-        UIOnNextLevel(controlKnives.knifeCount);
+        UIOnNextLevel(controlKnives.KnifeCount);
     }
 
     public void ContinueWithRewardAd()
@@ -40,7 +40,7 @@ public class LevelManager : MonoBehaviour
         
         controlKnives.SpawnKnife();
 
-        UIOnNextLevel(controlKnives.knifeCount);
+        UIOnNextLevel(controlKnives.KnifeCount);
     }
     
 }

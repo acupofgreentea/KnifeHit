@@ -6,7 +6,13 @@ public class ControlKnives : MonoBehaviour
 
     [SerializeField] private int remainingKnifeCount;
 
-    public int knifeCount;
+    [SerializeField] private int _knifeCount;
+
+    public int KnifeCount
+    {
+        get => _knifeCount; 
+        private set => _knifeCount = value;
+    }
 
     private LevelManager levelManager;
 
@@ -23,7 +29,7 @@ public class ControlKnives : MonoBehaviour
 
     private void Awake() 
     {
-        remainingKnifeCount = knifeCount;
+        remainingKnifeCount = _knifeCount;
         
         levelManager = GetComponent<LevelManager>();
     }
@@ -41,8 +47,8 @@ public class ControlKnives : MonoBehaviour
 
     private void SetKnivesForNextLevel()
     {
-        knifeCount++;
-        remainingKnifeCount = knifeCount;
+        _knifeCount++;
+        remainingKnifeCount = _knifeCount;
     }
     
     public void ResetRemainingKnifeCount()
