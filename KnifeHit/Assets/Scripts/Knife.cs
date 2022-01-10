@@ -11,7 +11,7 @@ public class Knife : MonoBehaviour
     private ParticleSystem particle;
     private AudioSource source;
 
-    private LevelManager levelManager;
+    private ControlKnives controlKnives;
 
     private bool isActive = true;
 
@@ -25,7 +25,7 @@ public class Knife : MonoBehaviour
         particle = GetComponent<ParticleSystem>();
         source = GetComponent<AudioSource>();
         
-        levelManager = FindObjectOfType<LevelManager>();
+        controlKnives = FindObjectOfType<ControlKnives>();
     }
 
     // Before build use !EventSystem.current.IsPointerOverGameObject()
@@ -92,7 +92,7 @@ public class Knife : MonoBehaviour
 
             transform.SetParent(other.collider.transform);
             
-            levelManager.OnSuccessfullHit();
+            controlKnives.OnSuccessfullHit();
         }
         else
         {

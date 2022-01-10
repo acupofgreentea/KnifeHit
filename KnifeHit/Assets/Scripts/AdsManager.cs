@@ -3,13 +3,18 @@ using UnityEngine.Advertisements;
 
 public class AdsManager : MonoBehaviour, IUnityAdsListener
 {
-    [SerializeField] private LevelManager levelManager;
+   private LevelManager levelManager;
 
 #if UNITY_ANDROID
     string gameId = "4548999";
 #else
     string gameId = "4548998";
 #endif
+
+    private void Awake() 
+    {
+        levelManager = FindObjectOfType<LevelManager>();
+    }
     void Start()
     {
         Advertisement.Initialize(gameId);

@@ -1313,6 +1313,89 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 267110824}
   m_CullTransparentMesh: 1
+--- !u!1 &335908001
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 335908005}
+  - component: {fileID: 335908006}
+  - component: {fileID: 335908003}
+  - component: {fileID: 335908002}
+  m_Layer: 0
+  m_Name: LevelManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &335908002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335908001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8fcdbeb01174f0428b11d7903dc35a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knife: {fileID: 6524981794785310474, guid: 5742aeebb4cc569469c3f0900199adea, type: 3}
+  knifeCount: 3
+  remainingKnifeCount: 0
+--- !u!114 &335908003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335908001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fd1a536ebbe51b4499f4df6e772e97d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knivesOnLog:
+  - {fileID: 8432640593073948171}
+  - {fileID: 220203614}
+  - {fileID: 105084551}
+  - {fileID: 986724877}
+  tomatos:
+  - {fileID: 555744842}
+  - {fileID: 31061102}
+  - {fileID: 1068079365}
+  - {fileID: 1704573735}
+--- !u!4 &335908005
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335908001}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -3.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &335908006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335908001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 030223784c67c7e48bee4a345409a8e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &343960138
 GameObject:
   m_ObjectHideFlags: 0
@@ -2315,63 +2398,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 806829481}
   m_CullTransparentMesh: 1
---- !u!1 &916346372
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 916346373}
-  - component: {fileID: 916346374}
-  m_Layer: 0
-  m_Name: LevelManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &916346373
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 916346372}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.56, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &916346374
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 916346372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 215ee91689c68c34b85049a25d5ea0d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  knivesOnLog:
-  - {fileID: 8432640593073948171}
-  - {fileID: 220203614}
-  - {fileID: 105084551}
-  - {fileID: 986724877}
-  tomatos:
-  - {fileID: 555744842}
-  - {fileID: 31061102}
-  - {fileID: 1068079365}
-  - {fileID: 1704573735}
-  knife: {fileID: 6524981794785310474, guid: 5742aeebb4cc569469c3f0900199adea, type: 3}
-  logMotor: {fileID: 1030507798}
-  knifeCount: 3
 --- !u!1 &986724877
 GameObject:
   m_ObjectHideFlags: 0
@@ -2773,7 +2799,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50fdbc6cd6ad1d645a8830d590df94b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelManager: {fileID: 916346374}
+  levelManager: {fileID: 335908006}
 --- !u!4 &1099204028
 Transform:
   m_ObjectHideFlags: 0
@@ -2787,7 +2813,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1673259790
 GameObject:
