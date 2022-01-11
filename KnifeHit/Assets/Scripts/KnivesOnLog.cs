@@ -5,12 +5,7 @@ public class KnivesOnLog : MonoBehaviour, IControlObjectsOnLog
     [SerializeField] private GameObject[] knife;
 
     private int _knifeCount;
-    public int ObjectsCount { get => _knifeCount ; set => _knifeCount = value; }
-
-    private void Awake() 
-    {
-        _knifeCount = knife.Length;
-    }
+    public int ObjectsCount {get => _knifeCount; set => _knifeCount = knife.Length;}
 
     public void SetActiveObjects(bool isActive, int count) 
     {

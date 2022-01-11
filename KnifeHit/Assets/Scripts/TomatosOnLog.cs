@@ -6,12 +6,7 @@ public class TomatosOnLog : MonoBehaviour, IControlObjectsOnLog
 
     private int _tomatoCount;
 
-    public int ObjectsCount { get => _tomatoCount; set => _tomatoCount = value; }
-
-    private void Awake() 
-    {
-        _tomatoCount = tomato.Length;
-    }
+    public int ObjectsCount { get => _tomatoCount; set => _tomatoCount = tomato.Length;}
 
     public void SetActiveObjects(bool isActive, int count)
     {
