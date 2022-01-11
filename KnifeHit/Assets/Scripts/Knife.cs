@@ -11,7 +11,7 @@ public class Knife : MonoBehaviour
     private ParticleSystem particle;
     private AudioSource source;
 
-    private ControlKnives controlKnives;
+    private KnifeController controlKnives;
 
     private bool isActive = true;
 
@@ -25,7 +25,7 @@ public class Knife : MonoBehaviour
         particle = GetComponent<ParticleSystem>();
         source = GetComponent<AudioSource>();
         
-        controlKnives = FindObjectOfType<ControlKnives>();
+        controlKnives = FindObjectOfType<KnifeController>();
     }
 
     // Before build use !EventSystem.current.IsPointerOverGameObject()

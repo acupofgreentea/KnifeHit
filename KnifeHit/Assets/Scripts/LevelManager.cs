@@ -9,11 +9,14 @@ public class LevelManager : MonoBehaviour
 
     public static Action LogMotorOnNextLevel;
     
-    private ControlKnives controlKnives;
+    private KnifeController controlKnives;
+
+    private KnivesOnLog knivesOnLog;
 
     private void Awake() 
     {
-        controlKnives = GetComponent<ControlKnives>();
+        controlKnives = GetComponent<KnifeController>();
+        knivesOnLog = GetComponent<KnivesOnLog>();
     }
 
     private void Start() 
@@ -34,6 +37,8 @@ public class LevelManager : MonoBehaviour
     
     public void LoadNextLevel()
     {
+        knivesOnLog.SetActiveObjects(false, knivesOnLog.ObjectsCount);
+
         LevelProperties();
         
         LogMotorOnNextLevel();

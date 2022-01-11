@@ -1323,8 +1323,10 @@ GameObject:
   m_Component:
   - component: {fileID: 335908005}
   - component: {fileID: 335908006}
-  - component: {fileID: 335908003}
-  - component: {fileID: 335908002}
+  - component: {fileID: 335908010}
+  - component: {fileID: 335908009}
+  - component: {fileID: 335908008}
+  - component: {fileID: 335908007}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -1332,43 +1334,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &335908002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 335908001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8fcdbeb01174f0428b11d7903dc35a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  knife: {fileID: 6524981794785310474, guid: 5742aeebb4cc569469c3f0900199adea, type: 3}
-  remainingKnifeCount: 0
-  _knifeCount: 3
---- !u!114 &335908003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 335908001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fd1a536ebbe51b4499f4df6e772e97d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  knivesOnLog:
-  - {fileID: 8432640593073948171}
-  - {fileID: 220203614}
-  - {fileID: 105084551}
-  - {fileID: 986724877}
-  tomatos:
-  - {fileID: 555744842}
-  - {fileID: 31061102}
-  - {fileID: 1068079365}
-  - {fileID: 1704573735}
 --- !u!4 &335908005
 Transform:
   m_ObjectHideFlags: 0
@@ -1396,6 +1361,67 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 030223784c67c7e48bee4a345409a8e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &335908007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335908001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 855c394fccbed2b4dbcbe4289cbf2e31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knife: {fileID: 6524981794785310474, guid: 5742aeebb4cc569469c3f0900199adea, type: 3}
+  remainingKnifeCount: 0
+  _knifeCount: 3
+--- !u!114 &335908008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335908001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88f78b4b2e5486f43bc230ea5122ae47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &335908009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335908001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8c9b1ae945407c41892d58f7b2d3416, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knife:
+  - {fileID: 8432640593073948171}
+  - {fileID: 220203614}
+  - {fileID: 105084551}
+  - {fileID: 986724877}
+--- !u!114 &335908010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335908001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9c5a50ff35736e419f60110701e53e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tomato:
+  - {fileID: 555744842}
+  - {fileID: 31061102}
+  - {fileID: 1068079365}
+  - {fileID: 1704573735}
 --- !u!1 &343960138
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ControlKnives : MonoBehaviour
+public class KnifeController : MonoBehaviour
 {
     [SerializeField] private GameObject knife;
 
